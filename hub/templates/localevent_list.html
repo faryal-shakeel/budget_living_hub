@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>Local Events</title></head>
+<body>
+    <h1>Local Events</h1>
+    {% if localevent_list %}
+        <ul>
+        {% for item in localevent_list %}
+            <li><strong>{{ item.event_name }}</strong> — {{ item.date }} — {{ item.location }}<br>{{ item.specification }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No local events yet.</p>
+    {% endif %}
+    <a href="{% url 'index' %}">Back to Home</a>
+</body>
+</html>

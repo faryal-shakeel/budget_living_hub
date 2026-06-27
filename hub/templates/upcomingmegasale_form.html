@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>Add Upcoming Mega Sale</title></head>
+<body>
+    <h1>Add Upcoming Mega Sale</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+    <a href="{% url 'sales' %}">Back to Upcoming Mega Sales</a>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>Add Food Centre</title></head>
+<body>
+    <h1>Add Food Centre</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+    <a href="{% url 'food' %}">Back to Food Centres</a>
+</body>
+</html>

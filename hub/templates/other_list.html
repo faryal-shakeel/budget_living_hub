@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>Other</title></head>
+<body>
+    <h1>Other (e.g. electronics, etc)</h1>
+    {% if other_list %}
+        <ul>
+        {% for item in other_list %}
+            <li><strong>{{ item.product_name }}</strong> — {{ item.shop_location }}<br>{{ item.description }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No other products yet.</p>
+    {% endif %}
+    <a href="{% url 'index' %}">Back to Home</a>
+</body>
+</html>

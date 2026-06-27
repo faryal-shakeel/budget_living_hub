@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>Recipes</title></head>
+<body>
+    <h1>Recipes</h1>
+    {% if recipe_list %}
+        <ul>
+        {% for item in recipe_list %}
+            <li><strong>{{ item.recipe_name }}</strong> — Cost: {{ item.cost }}<br>{{ item.description }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No recipes yet.</p>
+    {% endif %}
+    <a href="{% url 'index' %}">Back to Home</a>
+    <p><a href="{% url 'recipe-add' %}">Add a recipe</a></p>
+</body>
+</html>

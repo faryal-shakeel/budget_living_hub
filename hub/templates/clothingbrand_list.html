@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>Affordable Clothing Brands</title></head>
+<body>
+    <h1>Affordable Clothing Brands</h1>
+    {% if clothingbrand_list %}
+        <ul>
+        {% for item in clothingbrand_list %}
+            <li><strong>{{ item.brand_name }}</strong> — {{ item.location }}<br>{{ item.description }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No clothing brands yet.</p>
+    {% endif %}
+    <a href="{% url 'index' %}">Back to Home</a>
+</body>
+</html>

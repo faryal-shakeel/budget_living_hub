@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>Upcoming Mega Sales</title></head>
+<body>
+    <h1>Upcoming Mega Sales</h1>
+    {% if upcomingmegasale_list %}
+        <ul>
+        {% for item in upcomingmegasale_list %}
+            <li><strong>{{ item.brand }}</strong> — {{ item.discount }}% off<br>
+                From {{ item.start_date }} to {{ item.end_date }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No upcoming mega sales yet.</p>
+    {% endif %}
+    {% if user.is_authenticated %}
+        <p><a href="{% url 'sale-add' %}">Add an upcoming mega sale</a></p>
+    {% endif %}
+    <a href="{% url 'index' %}">Back to Home</a>
+</body>
+</html>

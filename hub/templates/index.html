@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home - Budget Living Hub</title>
+</head>
+<body>
+    <h1>Budget Living Hub</h1>
+    <p>Welcome to Budget Living Hub — helping you save money, live smarter, and make better financial decisions.</p>
+    {% if user.is_authenticated %}
+        <p>Hello, {{ user.username }}!
+        <form method="post" action="{% url 'logout' %}" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+        </p>
+    {% else %}
+        <p><a href="{% url 'login' %}">Login</a></p>
+    {% endif %}
+    <h2>We currently have:</h2>
+    <ul>
+        <li>Affordable clothing brands: {{ num_clothing }} — <a href="{% url 'clothing' %}">View all</a></li>
+        <li>Local events: {{ num_events }} — <a href="{% url 'events' %}">View all</a></li>
+        <li>Recipes: {{ num_recipes }} — <a href="{% url 'recipes' %}">View all</a></li>
+        <li>Food centres: {{ num_food }} — <a href="{% url 'food' %}">View all</a></li>
+        <li>Other (e.g. electronics, etc): {{ num_other }} — <a href="{% url 'others' %}">View all</a></li>
+        <li>Upcoming mega sales: {{ num_sales }} — <a href="{% url 'sales' %}">View all</a></li>
+    </ul>
+
+    <h2>Add new entries:</h2>
+    <ul>
+        <li><a href="{% url 'recipe-add' %}">Add a recipe</a> (open to everyone)</li>
+        <li><a href="{% url 'clothing-add' %}">Add a clothing brand</a> (staff only)</li>
+        <li><a href="{% url 'event-add' %}">Add a local event</a> (staff only)</li>
+        <li><a href="{% url 'food-add' %}">Add a food centre</a> (staff only)</li>
+        <li><a href="{% url 'other-add' %}">Add an other product</a> (staff only)</li>
+        <li><a href="{% url 'sale-add' %}">Add an upcoming mega sale</a> (staff only)</li>
+    </ul>
+</body>
+</html>

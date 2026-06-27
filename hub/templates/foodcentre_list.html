@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>Food Centres</title></head>
+<body>
+    <h1>Food Centres</h1>
+    {% if foodcentre_list %}
+        <ul>
+        {% for item in foodcentre_list %}
+            <li><strong>{{ item.cafe_name }}</strong> — {{ item.location }}<br>{{ item.description }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No food centres yet.</p>
+    {% endif %}
+    <a href="{% url 'index' %}">Back to Home</a>
+</body>
+</html>
