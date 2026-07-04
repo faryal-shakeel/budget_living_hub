@@ -1,17 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head><meta charset="UTF-8"><title>Local Events</title></head>
-<body>
-    <h1>Local Events</h1>
-    {% if localevent_list %}
-        <ul>
-        {% for item in localevent_list %}
-            <li><strong>{{ item.event_name }}</strong> — {{ item.date }} — {{ item.location }}<br>{{ item.specification }}</li>
-        {% endfor %}
-        </ul>
-    {% else %}
-        <p>No local events yet.</p>
+{% extends "base.html" %}
+{% block title %}Local Events{% endblock %}
+{% block content %}
+    <h1 class="mb-4">Local Events</h1>
+
+    {% if user.is_authenticated %}
+        <a href="{% url 'event-add' %}" class="btn btn-success mb-3">Add a Local Event</a>
     {% endif %}
-    <a href="{% url 'index' %}">Back to Home</a>
-</body>
-</html>
+
+    <div class="row">
+    {% for item in localevent_list %}
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.event_name }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ item.date }} — {{ item.location }}</h6>
+                    <p class="card-text">{{ item.specification }}</p>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <p>No local events yet.</p>
+    {% endfor %}
+    </div>
+{% endblock %}

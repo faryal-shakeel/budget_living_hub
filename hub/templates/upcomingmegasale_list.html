@@ -1,21 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head><meta charset="UTF-8"><title>Upcoming Mega Sales</title></head>
-<body>
-    <h1>Upcoming Mega Sales</h1>
-    {% if upcomingmegasale_list %}
-        <ul>
-        {% for item in upcomingmegasale_list %}
-            <li><strong>{{ item.brand }}</strong> — {{ item.discount }}% off<br>
-                From {{ item.start_date }} to {{ item.end_date }}</li>
-        {% endfor %}
-        </ul>
-    {% else %}
-        <p>No upcoming mega sales yet.</p>
-    {% endif %}
+{% extends "base.html" %}
+{% block title %}Upcoming Mega Sales{% endblock %}
+{% block content %}
+    <h1 class="mb-4">Upcoming Mega Sales</h1>
+
     {% if user.is_authenticated %}
-        <p><a href="{% url 'sale-add' %}">Add an upcoming mega sale</a></p>
+        <a href="{% url 'sale-add' %}" class="btn btn-success mb-3">Add an Upcoming Mega Sale</a>
     {% endif %}
-    <a href="{% url 'index' %}">Back to Home</a>
-</body>
-</html>
+
+    <div class="row">
+    {% for item in upcomingmegasale_list %}
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.brand }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ item.discount }}% off</h6>
+                    <p class="card-text">From {{ item.start_date }} to {{ item.end_date }}</p>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <p>No upcoming mega sales yet.</p>
+    {% endfor %}
+    </div>
+{% endblock %}

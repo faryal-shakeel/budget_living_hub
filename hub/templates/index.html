@@ -1,40 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home - Budget Living Hub</title>
-</head>
-<body>
-    <h1>Budget Living Hub</h1>
-    <p>Welcome to Budget Living Hub — helping you save money, live smarter, and make better financial decisions.</p>
-    {% if user.is_authenticated %}
-        <p>Hello, {{ user.username }}!
-        <form method="post" action="{% url 'logout' %}" style="display:inline;">
-            {% csrf_token %}
-            <button type="submit">Logout</button>
-        </form>
-        </p>
-    {% else %}
-        <p><a href="{% url 'login' %}">Login</a></p>
-    {% endif %}
-    <h2>We currently have:</h2>
-    <ul>
-        <li>Affordable clothing brands: {{ num_clothing }} — <a href="{% url 'clothing' %}">View all</a></li>
-        <li>Local events: {{ num_events }} — <a href="{% url 'events' %}">View all</a></li>
-        <li>Recipes: {{ num_recipes }} — <a href="{% url 'recipes' %}">View all</a></li>
-        <li>Food centres: {{ num_food }} — <a href="{% url 'food' %}">View all</a></li>
-        <li>Other (e.g. electronics, etc): {{ num_other }} — <a href="{% url 'others' %}">View all</a></li>
-        <li>Upcoming mega sales: {{ num_sales }} — <a href="{% url 'sales' %}">View all</a></li>
-    </ul>
+{% extends "base.html" %}
 
-    <h2>Add new entries:</h2>
-    <ul>
-        <li><a href="{% url 'recipe-add' %}">Add a recipe</a> (open to everyone)</li>
-        <li><a href="{% url 'clothing-add' %}">Add a clothing brand</a> (staff only)</li>
-        <li><a href="{% url 'event-add' %}">Add a local event</a> (staff only)</li>
-        <li><a href="{% url 'food-add' %}">Add a food centre</a> (staff only)</li>
-        <li><a href="{% url 'other-add' %}">Add an other product</a> (staff only)</li>
-        <li><a href="{% url 'sale-add' %}">Add an upcoming mega sale</a> (staff only)</li>
-    </ul>
-</body>
-</html>
+{% block title %}Home - Budget Living Hub{% endblock %}
+
+{% block content %}
+
+    <!-- Hero banner -->
+    <div class="p-5 mb-5 bg-success bg-gradient text-white rounded-3 shadow-sm">
+        <div class="container-fluid py-3">
+            <h1 class="display-4 fw-bold">Budget Living Hub</h1>
+            <p class="fs-5 col-md-8">
+                Welcome to Budget Living Hub — helping you save money, live smarter,
+                and make better financial decisions.
+            </p>
+        </div>
+    </div>
+
+    <h2 class="mb-4">We currently have:</h2>
+
+    <!-- row-cols: 1 card per row on phones, 2 on tablets, 3 on desktops. g-4 = gutter spacing -->
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+        <div class="col">
+            <div class="card h-100 shadow-sm border-success">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Affordable Clothing Brands</h5>
+                    <p class="display-5 fw-bold text-success">{{ num_clothing }}</p>
+                    <a href="{% url 'clothing' %}" class="btn btn-outline-success">View all</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card h-100 shadow-sm border-success">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Local Events</h5>
+                    <p class="display-5 fw-bold text-success">{{ num_events }}</p>
+                    <a href="{% url 'events' %}" class="btn btn-outline-success">View all</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card h-100 shadow-sm border-success">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Recipes</h5>
+                    <p class="display-5 fw-bold text-success">{{ num_recipes }}</p>
+                    <a href="{% url 'recipes' %}" class="btn btn-outline-success">View all</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card h-100 shadow-sm border-success">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Food Centres</h5>
+                    <p class="display-5 fw-bold text-success">{{ num_food }}</p>
+                    <a href="{% url 'food' %}" class="btn btn-outline-success">View all</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card h-100 shadow-sm border-success">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Other (e.g. electronics)</h5>
+                    <p class="display-5 fw-bold text-success">{{ num_other }}</p>
+                    <a href="{% url 'others' %}" class="btn btn-outline-success">View all</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card h-100 shadow-sm border-success">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Upcoming Mega Sales</h5>
+                    <p class="display-5 fw-bold text-success">{{ num_sales }}</p>
+                    <a href="{% url 'sales' %}" class="btn btn-outline-success">View all</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

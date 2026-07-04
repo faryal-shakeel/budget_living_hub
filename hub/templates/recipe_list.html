@@ -1,18 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head><meta charset="UTF-8"><title>Recipes</title></head>
-<body>
-    <h1>Recipes</h1>
-    {% if recipe_list %}
-        <ul>
-        {% for item in recipe_list %}
-            <li><strong>{{ item.recipe_name }}</strong> — Cost: {{ item.cost }}<br>{{ item.description }}</li>
-        {% endfor %}
-        </ul>
-    {% else %}
+{% extends "base.html" %}
+{% block title %}Recipes{% endblock %}
+{% block content %}
+    <h1 class="mb-4">Recipes</h1>
+
+    <a href="{% url 'recipe-add' %}" class="btn btn-success mb-3">Add a Recipe</a>
+
+    <div class="row">
+    {% for item in recipe_list %}
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.recipe_name }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Cost: Rs. {{ item.cost }}</h6>
+                    <p class="card-text">{{ item.description }}</p>
+                </div>
+            </div>
+        </div>
+    {% empty %}
         <p>No recipes yet.</p>
-    {% endif %}
-    <a href="{% url 'index' %}">Back to Home</a>
-    <p><a href="{% url 'recipe-add' %}">Add a recipe</a></p>
-</body>
-</html>
+    {% endfor %}
+    </div>
+{% endblock %}
