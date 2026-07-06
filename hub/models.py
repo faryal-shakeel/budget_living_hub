@@ -6,6 +6,7 @@ class ClothingBrand(models.Model):
     brand_name = models.CharField(max_length=200)
     description = models.TextField()
     location = models.CharField(max_length=200)
+    image_url = models.URLField(max_length=500, null=True, blank=True)
 
     def __str__(self):
         return self.brand_name
@@ -17,6 +18,7 @@ class LocalEvent(models.Model):
     date = models.DateField()
     specification = models.TextField()
     location = models.CharField(max_length=200)
+    image_url = models.URLField(max_length=500, null=True, blank=True)
 
     def __str__(self):
         return self.event_name
@@ -27,6 +29,7 @@ class Recipe(models.Model):
     recipe_name = models.CharField(max_length=200)
     description = models.TextField()
     cost = models.IntegerField()
+    image_url = models.URLField(max_length=500, null=True, blank=True)
 
     def __str__(self):
         return self.recipe_name
@@ -37,6 +40,7 @@ class FoodCentre(models.Model):
     cafe_name = models.CharField(max_length=200)
     description = models.TextField()
     location = models.CharField(max_length=200)
+    image_url = models.URLField(max_length=500, null=True, blank=True)
 
     def __str__(self):
         return self.cafe_name
@@ -47,6 +51,7 @@ class Other(models.Model):
     product_name = models.CharField(max_length=200)
     shop_location = models.CharField(max_length=200)
     description = models.TextField()
+    image_url = models.URLField(max_length=500, null=True, blank=True)
 
     def __str__(self):
         return self.product_name
@@ -57,6 +62,7 @@ class UpcomingMegaSale(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     discount = models.IntegerField(help_text="Enter discount percentage, e.g. 30")
+    image_url = models.URLField(max_length=500, null=True, blank=True)
 
     def __str__(self):
         return f'{self.brand} sale ({self.discount}% off)'

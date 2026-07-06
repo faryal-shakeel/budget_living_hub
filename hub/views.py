@@ -52,7 +52,7 @@ class OtherListView(generic.ListView):
 # Recipe add — open to EVERYONE (no login needed)
 class RecipeCreate(generic.CreateView):
     model = Recipe
-    fields = ['recipe_name', 'description', 'cost']
+    fields = ['recipe_name', 'description', 'cost', 'image_url']
     template_name = 'recipe_form.html'
     success_url = '/recipes/'
 
@@ -60,28 +60,28 @@ class RecipeCreate(generic.CreateView):
 # The other four — only logged-in users can add
 class ClothingBrandCreate(LoginRequiredMixin, generic.CreateView):
     model = ClothingBrand
-    fields = ['brand_name', 'description', 'location']
+    fields = ['brand_name', 'description', 'location', 'image_url']
     template_name = 'clothingbrand_form.html'
     success_url = '/clothing/'
 
 
 class LocalEventCreate(LoginRequiredMixin, generic.CreateView):
     model = LocalEvent
-    fields = ['event_name', 'date', 'specification', 'location']
+    fields = ['event_name', 'date', 'specification', 'location', 'image_url']
     template_name = 'localevent_form.html'
     success_url = '/events/'
 
 
 class FoodCentreCreate(LoginRequiredMixin, generic.CreateView):
     model = FoodCentre
-    fields = ['cafe_name', 'description', 'location']
+    fields = ['cafe_name', 'description', 'location', 'image_url']
     template_name = 'foodcentre_form.html'
     success_url = '/food/'
 
 
 class OtherCreate(LoginRequiredMixin, generic.CreateView):
     model = Other
-    fields = ['product_name', 'shop_location', 'description']
+    fields = ['product_name', 'shop_location', 'description', 'image_url']
     template_name = 'other_form.html'
     success_url = '/others/'
 
@@ -92,6 +92,6 @@ class UpcomingMegaSaleListView(generic.ListView):
 
 class UpcomingMegaSaleCreate(LoginRequiredMixin, generic.CreateView):
     model = UpcomingMegaSale
-    fields = ['brand', 'start_date', 'end_date', 'discount']
+    fields = ['brand', 'start_date', 'end_date', 'discount', 'image_url']
     template_name = 'upcomingmegasale_form.html'
     success_url = '/sales/'
