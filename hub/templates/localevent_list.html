@@ -11,8 +11,8 @@
     {% for item in localevent_list %}
         <div class="col-md-4 mb-3">
             <div class="card h-100 shadow">
-                {% if item.image_url %}
-                    <img src="{{ item.image_url }}" class="card-img-top" alt="{{ item.event_name }}" style="height: 200px; object-fit: cover;">
+                {% if item.display_image %}
+                    <img src="{{ item.display_image }}" class="card-img-top" alt="{{ item.event_name }}" style="height: 200px; object-fit: cover;">
                 {% endif %}
                 <div class="card-body">
                     <h5 class="card-title">{{ item.event_name }}</h5>

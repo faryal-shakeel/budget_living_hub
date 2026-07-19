@@ -3,7 +3,7 @@
 <head><meta charset="UTF-8"><title>Add Local Event</title></head>
 <body>
     <h1>Add Local Event</h1>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Save</button>
